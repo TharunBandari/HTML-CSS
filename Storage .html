@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <meta charset="UTF-8" />
+
+    <title>Froms</title>
+
+</head>
+
+<body>
+
+    <center>
+
+        <h1>User Infromation</h1><br>
+
+        <form action="#" >
+
+           
+
+            <label for="fname">Frist Name<label>&nbsp;&nbsp;<input type="text" name = "firstname" placeholder="enter your first name" required minlength ="5"max="30" /><br>
+
+            <br>
+
+            <label>Age</label><input type="number" min="18" max="120" name = "empage" size="5"/>
+
+            <br>
+
+            <br>
+
+            <br>
+
+            <label for="volume">Volume:</label>
+
+            <input type="range" id="volume" name="volume" min="0" max="1000" oninput="updateVolume()">
+
+            <input type="text" id="volumeValue" name="volumeValue" readonly/>
+
+            <br><br><br>
+
+            <label>upload your file</label>
+
+            <input type="file" name="files" accept="audio/MP3, video/mp4, video/mpeg,"/>
+
+            <br>
+
+            <br>
+
+ 
+
+            <input type="button" onclick="saveData()" value="save"/>&nbsp;&nbsp;<input type="reset" value="reset"/>
+
+ 
+
+            </form>
+
+            <script>
+
+                function updateVolume() {
+
+                    document.forms[0].volumeValue.value = document.forms[0].volume.value+"%";
+
+                }
+
+                function saveData(){
+
+                    var Name = document.forms[0].firstname.value;
+
+                    var age = document.forms[0].empage.value;
+                    
+                    sessionStorage.setItem("Name", Name);
+                    
+                    sessionStorage.setItem("age", age);
+
+                    console.log(Name+"\t\t"+ age);
+
+                   
+
+                }
+
+            </script>
+
+    </center>
+
+</body>
+
+</html>
+
+<!--
+
+    HTML provide two type of storage Facilty
+
+    1) Session Storage: temporary
+
+    2) local storage : permanent
+
+-->

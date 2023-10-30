@@ -1,0 +1,41 @@
+<html>
+
+    <body background="https://tpc.googlesyndication.com/daca_images/simgad/951179244208735596" style="background-size: 100%100%;">
+
+<script>
+
+        var evt = new Event("count");
+
+        var counter=0;
+
+        function countAndShow(){
+
+            for (counter=0;counter<100000;counter++){
+
+                document.getElementById("cnt").value=counter;
+
+            }
+
+        }
+
+        document.addEventListener("count",countAndShow);
+
+        function startCounting(){
+
+            document.dispatchEvent(evt);
+
+        }    
+
+</script>
+
+        <center>
+
+        <input type="number" min="1" max="100000" id="cnt"/>
+
+        <br><br><input type="button" value="Start" onclick="startCounting()"/>
+
+        </center>
+
+    </body>
+
+</html>

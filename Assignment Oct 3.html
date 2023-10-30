@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Changing Form</title>
+</head>
+<body>
+    <h1>Assignment</h1>
+    <div id="form-container">
+        <button onclick="addInput('text')">Add Text</button>
+        <button onclick="addInput('email')">Add Email</button>
+        <button onclick="addInput('date')">Add Date</button>
+        <button onclick="addGenderInputs()">Add Gender</button>
+        <button onclick="removeInputs()">Remove</button>
+        <button onclick="replaceInputs()">Replace</button> <!-- Added "Replace" button -->
+        <br><br>
+        <form id="dynamic-form"></form>
+    </div>
+
+    <script>
+        function addInput(inputType) {
+            const dynamicForm = document.getElementById('dynamic-form');
+            const inputField = document.createElement('input');
+            inputField.type = inputType;
+            inputField.name = 'user-input';
+            const label = document.createElement('label');
+            label.textContent = 'Enter ';
+
+            if (inputType === 'text') {
+                label.textContent += 'Text';
+            } else if (inputType === 'email') {
+                label.textContent += 'Email';
+            } else if (inputType === 'date') {
+                label.textContent += 'Date';
+            }
+            dynamicForm.appendChild(label);
+            dynamicForm.appendChild(inputField);
+        }
+
+        function addGenderInputs() {
+            const dynamicForm = document.getElementById('dynamic-form');
+
+            const maleInput = document.createElement('input');
+            maleInput.type = 'radio';
+            maleInput.name = 'gender';
+            maleInput.value = 'male';
+
+            const femaleInput = document.createElement('input');
+            femaleInput.type = 'radio';
+            femaleInput.name = 'gender';
+            femaleInput.value = 'female';
+            const maleLabel = document.createElement('label');
+            maleLabel.textContent = 'Male';
+            const femaleLabel = document.createElement('label');
+            femaleLabel.textContent = 'Female';
+
+            dynamicForm.appendChild(maleInput);
+            dynamicForm.appendChild(maleLabel);
+            dynamicForm.appendChild(femaleInput);
+            dynamicForm.appendChild(femaleLabel);
+        }
+
+        function removeInputs() {
+            const dynamicForm = document.getElementById('dynamic-form');
+            dynamicForm.innerHTML = '';
+        }
+
+        function replaceInputs() {
+            removeInputs();
+            addInput('text'); // Replace with the input type you want to add
+        }
+    </script>
+</body>
+</html>

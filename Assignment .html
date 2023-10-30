@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Machine IP Lookup and Book Details</title>
+</head>
+<body>
+    <h1>Machine IP Lookup</h1>
+    <label for="machineName">Enter Machine Name:</label>
+    <input type="text" id="machineName">
+    <button onclick="printMachineIP()">Lookup IP</button>
+    <p id="machineIPResult"></p>
+
+    <h1>Book Details</h1>
+    <label for="bookID">Book ID:</label>
+    <input type="text" id="bookID"><br>
+    <label for="bookPrice">Book Price:</label>
+    <input type="text" id="bookPrice"><br>
+    <label for="bookTitle">Book Title:</label>
+    <input type="text" id="bookTitle"><br>
+    <button onclick="setAndPrintBookDetails()">Set and Print Book Details</button>
+    <div id="bookDetails"></div>
+
+    <script>
+        // Create an associative array for machines and their IP addresses
+        var machineIPs = {
+            "Machine1": "192.168.1.101",
+            "Machine2": "192.168.1.102",
+            "Machine3": "192.168.1.103"
+            // Add more machines and IPs as needed
+        };
+
+        // Function to print the IP address of a given machine
+        function printMachineIP() {
+            var machineNameInput = document.getElementById("machineName").value;
+            var machineIPResult = document.getElementById("machineIPResult");
+            if (machineNameInput in machineIPs) {
+                machineIPResult.textContent = `IP Address of ${machineNameInput}: ${machineIPs[machineNameInput]}`;
+            } else {
+                machineIPResult.textContent = `${machineNameInput} not found in the list.`;
+            }
+        }
+
+        // Function to set and print book details
+        function setAndPrintBookDetails() {
+            var bookID = document.getElementById("bookID").value;
+            var bookPrice = document.getElementById("bookPrice").value;
+            var bookTitle = document.getElementById("bookTitle").value;
+            var bookDetailsDiv = document.getElementById("bookDetails");
+
+            // Create a book object
+            var book = {
+                bookID: bookID,
+                bookPrice: bookPrice,
+                bookTitle: bookTitle,
+                print: function () {
+                    bookDetailsDiv.innerHTML = `
+                        <p>Book ID: ${this.bookID}</p>
+                        <p>Book Price: ${this.bookPrice}</p>
+                        <p>Book Title: ${this.bookTitle}</p>
+                    `;
+                }
+            };
+
+            // Print the book details
+            book.print();
+        }
+    </script>
+</body>
+</html>
